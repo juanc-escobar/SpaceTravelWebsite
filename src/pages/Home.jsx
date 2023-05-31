@@ -14,7 +14,7 @@ const Home = () => {
 
 
   return (
-    <body className="home">
+    <div className="home">
     <a className="skip-to-content" href="#main">Skip to content</a>
     <header className="primary-header flex">
         <div>
@@ -33,7 +33,7 @@ const Home = () => {
       </div>
       <ExploreBtn />
     </main>
-    </body>
+    </div>
   )
 }
 
