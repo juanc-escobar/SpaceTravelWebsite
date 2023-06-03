@@ -30,7 +30,9 @@ const Home = () => {
       <a className="skip-to-content" href="#main">Skip to content</a>
       <header className="primary-header flex">
           <div>
-            <img src="../src/assets/shared/logo.svg" alt="space tourism logo" className="logo"/>
+            <picture>
+              <img src="../src/assets/shared/logo.svg" alt="space tourism logo" className="logo"/>
+            </picture>
           </div>
           <button className="mobile-nav-btn" aria-controls="primary-navigation" aria-expanded={clicked ? "false" : "true"} onClick={handleClick}><span className="sr-only">Menu</span></button>
           <NavBar clicked={clicked}/>
