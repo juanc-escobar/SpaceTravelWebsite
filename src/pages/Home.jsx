@@ -1,6 +1,7 @@
 import NavBar from "../components/NavBar"
 import { useState } from "react"
 import { Outlet, useLocation } from "react-router-dom"
+import Logo from "../assets/shared/logo.svg"
 
 
 const Home = () => {
@@ -31,7 +32,7 @@ const Home = () => {
       <header className="primary-header flex">
           <div>
             <picture>
-              <img src="../src/assets/shared/logo.svg" alt="space tourism logo" className="logo"/>
+              <img src={Logo} alt="space tourism logo" className="logo"/>
             </picture>
           </div>
           <button className="mobile-nav-btn" aria-controls="primary-navigation" aria-expanded={clicked ? "false" : "true"} onClick={handleClick}><span className="sr-only">Menu</span></button>
