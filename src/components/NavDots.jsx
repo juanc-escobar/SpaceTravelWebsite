@@ -1,11 +1,14 @@
 import React from 'react'
 
-export const NavDots = () => {
+export const NavDots = ({selectCrew = 'Douglas Hurley', handleCrew}) => {
+
+  const tripulation = ['Douglas Hurley', 'Mark Shuttleworth', 'Victor Glover', 'Anousheh Ansari']
+
   return (
     <div className="dot-indicators flex">
-        <button aria-selected="true" className='active'><span className='sr-only'>Slide title</span></button>
-        <button aria-selected="false" className=''><span className='sr-only'>Slide title</span></button>
-        <button aria-selected="false" className=''><span className='sr-only'>Slide title</span></button>
+        {tripulation.map((crew) => (
+          <button key={crew} aria-selected={crew === selectCrew} className={`${crew === selectCrew ? 'active' : ''}`} onClick={() => handleCrew(crew)}><span className='sr-only'>{crew}</span></button>
+        ))}
     </div>
   )
 }

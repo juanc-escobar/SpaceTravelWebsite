@@ -1,12 +1,19 @@
 import React from 'react'
 
-const NavTabs = () => {
+
+const NavTabs = ({selectPlanet, handlePlanetChange}) => {
+  
+  const planets = ['Moon', 'Mars', 'Europa', 'Titan']
+
+  if (!selectPlanet) {
+    selectPlanet = planets[0]; 
+  }
+
   return (
     <div className="tab-list underline-indicators flex">
-    <button aria-selected="true" className='uppercase text-white letter-spacing-2   ff-sans-cond'>Moon</button>
-    <button aria-selected="false" className='uppercase text-white letter-spacing-2  ff-sans-cond'>Mars</button>
-    <button aria-selected="false" className='uppercase text-white letter-spacing-2  ff-sans-cond'>Europa</button>
-    <button aria-selected="false" className='uppercase text-white letter-spacing-2  ff-sans-cond'>Titan</button>
+      {planets.map((planet) => (
+        <button key={planet} aria-selected ={planet === selectPlanet} className='uppercase text-white letter-spacing-2 ff-sans-cond' onClick={() => handlePlanetChange(planet)}>{planet}</button>
+      ))}
   </div>
   )
 }

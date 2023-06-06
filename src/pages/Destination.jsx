@@ -1,32 +1,35 @@
-import NavBar from "../components/NavBar"
-import MoonImgW from "../assets/destination/image-moon.webp"
-import MoonImg from "../assets/destination/image-moon.png"
+import { useState } from "react"
 import NavTabs from "../components/NavTabs"
+import data from "../data.json"
 
 const Destination = () => {
+  const [selectPlanet, setSlectPlanet] = useState("Moon");
+  const {name, images, description, distance, travel} = data.destinations.find(planet => planet.name === selectPlanet);
+  const handlePlanetChange = (planet) => {
+    setSlectPlanet(planet);
+  };
+
   return (
     <main id="main" className="grid-container grid-container--destination flow">
       <h1 className="numbered-title uppercase"><span aria-hidden="true" >01</span> Pick your destination</h1>
       <picture>
-        <source srcSet={MoonImgW} type="image/webp"/>
-        <img src={MoonImg} alt="the moon" />
+        <source srcSet={images.webp} type="image/webp"/>
+        <img src={images.png} alt={name} />
       </picture>
-      <NavTabs />
+      <NavTabs selectPlanet={selectPlanet} handlePlanetChange={handlePlanetChange} />
       <article className="destination-info">
-      <h2 className="fs-800 uppercase ff-serif">Moon</h2>
+      <h2 className="fs-800 uppercase ff-serif">{name}</h2>
 
-        <p>See our planet as you’ve never seen it before. A perfect relaxing trip away to help 
-        regain perspective and come back refreshed. While you’re there, take in some history 
-        by visiting the Luna 2 and Apollo 11 landing sites.</p>
+        <p>{description}</p>
         
         <div className="destination-meta flex">
           <div>
             <h3 className="text-accent fs-200 uppercase">Avg. distance</h3>
-            <p className="fs-500 ff-serif uppercase">384,400 km</p>
+            <p className="fs-500 ff-serif uppercase">{distance}</p>
           </div>
           <div>
             <h3 className="text-accent fs-200 uppercase">Est. travel time</h3>
-            <p className="fs-500 ff-serif uppercase">3 days</p>
+            <p className="fs-500 ff-serif uppercase">{travel}</p>
           </div>
         </div>
       </article>
