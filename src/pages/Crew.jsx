@@ -8,7 +8,6 @@ const Crew = () => {
   const { role, name, bio, images } = data.crew.find(crew => crew.name === selectCrew);
   const handleCrew = (crew) => {
     setSlectCrew(crew);
-    console.log(crew);
   };
 
   return (

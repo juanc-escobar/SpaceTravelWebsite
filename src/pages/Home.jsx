@@ -10,9 +10,8 @@ const Home = () => {
   const location = useLocation();
 
   const handleClick = () => { 
-    setClicked(!clicked);
-    console.log(clicked);
-  } 
+    setClicked(!clicked)
+  };
 
   const getClassname = () => {
     if (location.pathname === "/Destination") {
@@ -26,6 +25,8 @@ const Home = () => {
     }
   };
 
+  const activeClass = location.pathname;
+
   return (
     <div className={`home ${getClassname()}`}>
       <a className="skip-to-content" href="#main">Skip to content</a>
@@ -34,7 +35,7 @@ const Home = () => {
               <img src={Logo} alt="space tourism logo" className="logo"/>
           </div>
           <button className="mobile-nav-btn" aria-controls="primary-navigation" aria-expanded={clicked ? "false" : "true"} onClick={handleClick}><span className="sr-only">Menu</span></button>
-          <NavBar clicked={clicked}/>
+          <NavBar clicked={clicked} activeClass={activeClass} />
       </header>
       <Outlet />
     </div>
