@@ -270,7 +270,7 @@ input, button, textarea, select {
 /* primary-header */
 
 .logo {
-  margin: 1.5rem clamp(1.5rem,5vw,3.5rem)
+  margin: 1.5rem clamp(1.5rem,5vw,3.5rem);
 }
 
 .primary-header {
@@ -482,7 +482,7 @@ input, button, textarea, select {
   min-height: 100vh;
   background-size: cover;
   background-position: bottom center;
- 
+ overflow-x: hidden;
 }
 
 
@@ -619,6 +619,7 @@ input, button, textarea, select {
 
 .grid-container--crew > .crew-details {
   grid-area: content;
+  margin-bottom: 3.5rem;
 }
 
 .crew-details h2 {
@@ -663,6 +664,7 @@ input, button, textarea, select {
 
 .technology-details {
   --flow-space: 1.5rem;
+  margin-bottom: 3.5rem;
 }
 
 .tech-title {
@@ -690,6 +692,10 @@ input, button, textarea, select {
     'image';
   }
 
+  .grid-container--crew > .crew-details {
+    margin-bottom: 0;
+  }
+
   .grid-container--technology {
     grid-template-areas: 
     'title'
@@ -700,6 +706,7 @@ input, button, textarea, select {
 
   .technology-details {
     width: clamp(25rem,30vw + 10rem ,80rem);
+    margin-bottom: 0;
   }
 
 }
@@ -739,7 +746,7 @@ input, button, textarea, select {
 
   .grid-container--destination > picture,
   .grid-container--crew > picture {
-    max-width: 90%;
+    max-width: 100%;
   }
 
   .destination-meta {
@@ -754,6 +761,10 @@ input, button, textarea, select {
     '. tabs image .';
   }
 
+  .grid-container--crew > .crew-details {
+    justify-self: start;
+  }
+
   .grid-container--crew > .dot-indicators {
     justify-self: start;
   }
@@ -764,38 +775,72 @@ input, button, textarea, select {
 
   .grid-container--technology {
     grid-template-areas: 
-    '. title title title  image .'
-    '. tabs  content content image .'
-    '. tabs  content content  image .';
+    '. title  title image .'
+    '. tabs  content image .'
+    '. tabs  content  image .';
     grid-template-columns: auto minmax(0, 0.3fr) minmax(0, 1fr) minmax(0, 1fr) auto;
   }
 
-  .numbers-indicators {
-    flex-direction: column;
+  .grid-container--technology .numbered-title {
+    justify-self: start;
+    padding-left: clamp(1vw, 4.5vw, 6vw);
   }
 
   .full-width {
     left: 0;
     margin-left: 0;
-    margin-right: -4vw;
-    max-width: 40vw;
+    margin-right: -7vw;
+    max-width: 35vw;
+    min-width: 20vw;
     position: relative;
     right: 0;
-    width: 50vw;
+    width: 35vw;
     transform: scale(1);
   }
   
-  .numbers-indicators{
+  .numbers-indicators {
+    flex-direction: column;
     align-self: start;
-    justify-self: start;
+    justify-self: center;
+  }
+
+  
+  .numbers-indicators > * {
+    width: 4rem;
+    height: 4rem;
   }
 
   .technology-details {
     align-self: end;
     justify-self: start;
+    width: clamp(300px, 100px + 30vw, 600px);
   }
 
   .grid-container--technology > picture {
     justify-self: end;
   }
+}
+
+
+
+@media (min-width:120.5em) {
+
+  .grid-container--technology {
+    grid-template-columns: minmax(0, 0.2fr) minmax(0, 0.3fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.2fr);
+  }
+
+  .full-width {
+    margin-left: 0;
+    max-width: 25vw;
+    width: 25vw;
+  }
+
+  .technology-details {
+    max-width: 600px;
+  }
+
+  .grid-container--technology > picture {
+    justify-self: start;
+  }
+
 }
